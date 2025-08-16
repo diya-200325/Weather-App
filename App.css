@@ -1,3 +1,4 @@
+/* Whole app background */
 .app {
   min-height: 100vh;
   background: linear-gradient(to right, #4facfe, #00f2fe);
@@ -16,7 +17,7 @@
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
 }
 
 /* Search bar */
@@ -50,15 +51,23 @@
 
 /* Weather card */
 .weather-card {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 20px 40px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 25px 40px;
   border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  backdrop-filter: blur(8px);
+  max-width: 300px;
 }
 
 .weather-card h2 {
   font-size: 2rem;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+}
+
+.weather-card .time {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: #f1f1f1;
 }
 
 .weather-card .temp {
@@ -70,4 +79,12 @@
 .weather-card .condition {
   font-size: 1.2rem;
   text-transform: capitalize;
+  margin-bottom: 15px;
+}
+
+.weather-card .extra {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 1rem;
 }
