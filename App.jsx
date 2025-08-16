@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./App.css"; // import the CSS file
+import "./App.css";
 
 function App() {
   const [city, setCity] = useState("");
@@ -10,7 +10,7 @@ function App() {
     if (!city) return;
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+        https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric
       );
       const data = await response.json();
       if (data.cod === 200) {
@@ -22,6 +22,12 @@ function App() {
     } catch (error) {
       console.error("Error fetching weather:", error);
     }
+  };
+
+  // function to convert UNIX timestamp + timezone offset into readable time
+  const formatTime = (timezone) => {
+    const localTime = new Date(Date.now() + timezone * 1000);
+    return localTime.toUTCString().slice(17, 22); // hh:mm format
   };
 
   return (
@@ -40,9 +46,14 @@ function App() {
 
       {weather && (
         <div className="weather-card">
-          <h2>{weather.name}</h2>
+          <h2>{weather.name}, {weather.sys.country}</h2>
+          <p className="time">🕒 Local Time: {formatTime(weather.timezone)}</p>
           <p className="temp">{weather.main.temp}°C</p>
           <p className="condition">{weather.weather[0].description}</p>
+          <div className="extra">
+            <p>💧 Humidity: {weather.main.humidity}%</p>
+            <p>💨 Wind: {weather.wind.speed} m/s</p>
+          </div>
         </div>
       )}
     </div>
