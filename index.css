@@ -1,0 +1,12 @@
+/* Reset default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Apply a clean base font */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+}
